@@ -3,38 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akhilesh Rao | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<title>Akhilesh Rao | Ascension Mode</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
-background:#0b1120;
+background:#050816;
 color:white;
 overflow-x:hidden;
 }
 
-/* Floating soft glow background */
-body::before, body::after{
+/* Animated gradient background */
+body::before{
 content:"";
 position:fixed;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#38bdf8,transparent 70%);
-filter:blur(120px);
-opacity:0.15;
-z-index:-1;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 20% 20%,#2563eb30,transparent 40%),
+radial-gradient(circle at 80% 80%,#9333ea30,transparent 40%);
+z-index:-2;
+animation:moveBg 12s infinite alternate ease-in-out;
 }
 
-body::before{ top:-150px; left:-150px; }
-body::after{ bottom:-150px; right:-150px; }
+@keyframes moveBg{
+0%{transform:translateY(0);}
+100%{transform:translateY(-50px);}
+}
 
 /* Navbar */
 header{
@@ -43,35 +46,32 @@ width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 8%;
-background:rgba(15,23,42,0.8);
-backdrop-filter:blur(12px);
-border-bottom:1px solid rgba(255,255,255,0.05);
+padding:20px 8%;
+background:rgba(10,15,35,0.7);
+backdrop-filter:blur(20px);
 z-index:1000;
+border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 header h1{
-font-weight:700;
-font-size:20px;
+font-weight:800;
+font-size:18px;
+letter-spacing:2px;
 }
 
 nav a{
-margin-left:25px;
+margin-left:30px;
 text-decoration:none;
 color:#cbd5e1;
-transition:0.3s;
 font-size:14px;
+transition:0.3s;
 }
 
 nav a:hover{
-color:#38bdf8;
+color:#60a5fa;
 }
 
-/* Sections */
-section{
-padding:120px 8%;
-}
-
+/* Hero */
 .hero{
 height:100vh;
 display:flex;
@@ -79,16 +79,17 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+padding:0 20px;
 }
 
 .hero h2{
-font-size:72px;
+font-size:80px;
 font-weight:800;
-background:linear-gradient(90deg,#38bdf8,#60a5fa,#38bdf8);
+background:linear-gradient(90deg,#60a5fa,#9333ea,#60a5fa);
 background-size:200%;
 -webkit-background-clip:text;
 color:transparent;
-animation:shine 4s linear infinite;
+animation:shine 5s linear infinite;
 }
 
 @keyframes shine{
@@ -97,55 +98,66 @@ animation:shine 4s linear infinite;
 }
 
 .hero p{
+margin-top:25px;
 max-width:800px;
 color:#94a3b8;
-margin:25px 0 40px 0;
 font-size:18px;
+line-height:1.8;
 }
 
+/* Buttons */
 .btn{
+margin-top:30px;
 padding:14px 34px;
-border-radius:40px;
-background:#38bdf8;
-color:black;
+border-radius:50px;
+border:1px solid #60a5fa;
+color:#60a5fa;
 text-decoration:none;
-font-weight:600;
-transition:0.3s;
-margin:10px;
 display:inline-block;
+transition:0.3s;
+position:relative;
+overflow:hidden;
 }
 
 .btn:hover{
-background:white;
-transform:scale(1.1);
+background:#60a5fa;
+color:black;
+transform:translateY(-5px);
+box-shadow:0 15px 40px #60a5fa40;
+}
+
+/* Sections */
+section{
+padding:120px 8%;
 }
 
 h3{
 text-align:center;
-font-size:38px;
+font-size:42px;
 margin-bottom:60px;
-font-weight:700;
+font-weight:800;
 }
 
 /* Cards */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:40px;
 }
 
 .card{
 background:rgba(255,255,255,0.03);
-backdrop-filter:blur(20px);
-padding:45px;
-border-radius:25px;
-transition:0.4s;
+padding:40px;
+border-radius:20px;
+backdrop-filter:blur(25px);
 border:1px solid rgba(255,255,255,0.06);
+transition:0.4s;
+transform-style:preserve-3d;
 }
 
 .card:hover{
-transform:translateY(-15px) rotateX(3deg) rotateY(3deg);
-box-shadow:0 40px 80px rgba(0,0,0,0.6);
+transform:rotateX(5deg) rotateY(5deg) translateY(-10px);
+box-shadow:0 30px 60px rgba(0,0,0,0.6);
 }
 
 .card h4{
@@ -161,25 +173,24 @@ line-height:1.7;
 /* Skills */
 .skills span{
 display:inline-block;
-margin:12px;
-padding:12px 20px;
-background:rgba(56,189,248,0.08);
-border:1px solid #38bdf8;
+margin:10px;
+padding:10px 20px;
+border:1px solid #9333ea;
 border-radius:30px;
-font-size:14px;
+color:#9333ea;
 transition:0.3s;
 }
 
 .skills span:hover{
-background:#38bdf8;
-color:black;
+background:#9333ea;
+color:white;
 }
 
-/* Fade Animation */
+/* Fade animation */
 .fade{
 opacity:0;
 transform:translateY(50px);
-transition:all 1s ease;
+transition:1s ease;
 }
 
 .fade.show{
@@ -187,18 +198,12 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* Contact */
-.contact a{
-color:#38bdf8;
-text-decoration:none;
-}
-
+/* Footer */
 footer{
 text-align:center;
 padding:60px;
-background:rgba(0,0,0,0.5);
 color:#64748b;
-margin-top:60px;
+border-top:1px solid rgba(255,255,255,0.05);
 }
 
 @media(max-width:768px){
@@ -210,7 +215,7 @@ margin-top:60px;
 <body>
 
 <header>
-<h1>Akhilesh Rao</h1>
+<h1>AKHILESH RAO</h1>
 <nav>
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
@@ -222,30 +227,26 @@ margin-top:60px;
 <section class="hero">
 <h2>Akhilesh Rao</h2>
 <p>
-Electronics & Communication Engineering student at PES University passionate about 
-software engineering, system design, and building scalable real-world solutions. 
-Focused on mastering Python, strengthening data structures fundamentals, and 
-developing impactful engineering projects.
+ECE Undergraduate at PES University building powerful software systems 
+and engineering solutions. Passionate about Python, system design, and 
+high-performance problem solving.
 </p>
-<div>
-<a href="https://github.com/Akhi-22lesh" target="_blank" class="btn">GitHub</a>
 <a href="Akhilesh_Resume.pdf" target="_blank" class="btn">Download Resume</a>
-</div>
+<a href="https://github.com/Akhi-22lesh" target="_blank" class="btn">GitHub</a>
 </section>
 
 <section id="about" class="fade">
 <h3>About Me</h3>
-<p style="max-width:900px;margin:auto;text-align:center;color:#94a3b8;line-height:1.9;font-size:16px;">
-I am a driven and ambitious Electronics & Communication Engineering undergraduate at PES University. 
-My academic foundation in digital logic, circuit theory, and computing principles enables me to approach 
-engineering problems from both hardware and software perspectives.
+<p style="max-width:900px;margin:auto;text-align:center;color:#94a3b8;line-height:1.9;">
+I am a highly driven Electronics & Communication Engineering student with 
+a deep interest in software development and system-level problem solving. 
+My academic journey blends hardware fundamentals with programming precision, 
+allowing me to approach engineering challenges holistically.
 <br><br>
-Beyond academics, I actively focus on strengthening my programming expertise in Python and building 
-solid foundations in data structures and algorithmic thinking. I enjoy solving complex problems, 
-writing efficient and structured code, and translating theoretical knowledge into practical implementations.
-<br><br>
-Through project development and hackathon participation, I continuously push myself to grow as a 
-high-performance engineer capable of building scalable, impactful, and technically sound solutions.
+I continuously refine my skills in Python and data structures while 
+developing scalable solutions through projects and collaborative environments. 
+My focus is to evolve into a high-impact engineer capable of building 
+technically robust and meaningful systems.
 </p>
 </section>
 
@@ -265,56 +266,42 @@ high-performance engineer capable of building scalable, impactful, and technical
 <section id="projects" class="fade">
 <h3>Projects</h3>
 <div class="grid">
-
 <div class="card">
-<h4>Programming Projects</h4>
-<p>
-Developed logic-driven applications and algorithm-focused solutions using Python,
-emphasizing structured problem-solving and clean code principles.
-</p>
-<a href="https://github.com/Akhi-22lesh" target="_blank" class="btn">View Code</a>
+<h4>Algorithmic Applications</h4>
+<p>Built structured Python-based logic systems focusing on efficiency and clarity.</p>
 </div>
-
 <div class="card">
-<h4>Electronics Mini Projects</h4>
-<p>
-Designed and implemented digital logic and circuit-based prototypes applying 
-engineering theory to practical working systems.
-</p>
+<h4>Electronics Prototypes</h4>
+<p>Designed and implemented circuit-based functional systems applying core theory.</p>
 </div>
-
 <div class="card">
-<h4>Hackathon Participation</h4>
-<p>
-Collaborated in competitive environments building rapid prototypes and 
-innovative technical solutions under strict time constraints.
-</p>
+<h4>Hackathon Builds</h4>
+<p>Collaborative rapid-prototype development under competitive time constraints.</p>
 </div>
-
 </div>
 </section>
 
 <section id="contact" class="fade">
 <h3>Contact</h3>
-<p style="text-align:center;font-size:16px;line-height:2;">
-📧 Email: <a href="mailto:akhileshramshankarrao@gmail.com">akhileshramshankarrao@gmail.com</a><br>
-💼 LinkedIn: <a href="https://www.linkedin.com/in/akhilesh-rao-335956369/" target="_blank">linkedin.com/in/akhilesh-rao-335956369</a><br>
-📱 Phone: +91 9845721123<br>
-💻 GitHub: <a href="https://github.com/Akhi-22lesh" target="_blank">github.com/Akhi-22lesh</a>
+<p style="text-align:center;line-height:2;">
+📧 akhileshramshankarrao@gmail.com<br>
+💼 <a href="https://www.linkedin.com/in/akhilesh-rao-335956369/" target="_blank" style="color:#60a5fa;">LinkedIn</a><br>
+📱 +91 9845721123<br>
+💻 <a href="https://github.com/Akhi-22lesh" target="_blank" style="color:#60a5fa;">GitHub</a>
 </p>
 </section>
 
 <footer>
-© 2026 Akhilesh Rao | Built with Precision & Passion
+© 2026 Akhilesh Rao | Ascension Mode Activated ⚡
 </footer>
 
 <script>
-const sections=document.querySelectorAll('.fade');
+const elements=document.querySelectorAll('.fade');
 window.addEventListener('scroll',()=>{
-sections.forEach(sec=>{
-const top=sec.getBoundingClientRect().top;
+elements.forEach(el=>{
+const top=el.getBoundingClientRect().top;
 if(top<window.innerHeight-100){
-sec.classList.add('show');
+el.classList.add('show');
 }
 });
 });
