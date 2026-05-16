@@ -3,328 +3,668 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akhilesh Rao | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-
+<title>Akhilesh R S Rao — ECE Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-scroll-behavior:smooth;
-}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-body{
-background:#050816;
-color:white;
-overflow-x:hidden;
-}
+  :root {
+    --bg: #0b0c0e;
+    --surface: #111317;
+    --surface2: #181b21;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8e9ed;
+    --muted: #7a7f8e;
+    --accent: #00e5a0;
+    --accent2: #0af;
+    --accent3: #ff6b6b;
+    --grad: linear-gradient(135deg, #00e5a0, #00aaff);
+  }
 
-/* Animated Glow Background */
-body::before, body::after{
-content:"";
-position:fixed;
-width:600px;
-height:600px;
-background:radial-gradient(circle,#3b82f6,transparent 70%);
-filter:blur(150px);
-opacity:0.15;
-z-index:-1;
-animation:float 8s ease-in-out infinite alternate;
-}
+  html { scroll-behavior: smooth; }
 
-body::after{
-background:radial-gradient(circle,#9333ea,transparent 70%);
-right:-200px;
-bottom:-200px;
-animation-delay:3s;
-}
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-body::before{
-left:-200px;
-top:-200px;
-}
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
 
-@keyframes float{
-0%{transform:translateY(0px);}
-100%{transform:translateY(-60px);}
-}
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(11,12,14,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
 
-/* Navbar */
-header{
-position:fixed;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 8%;
-background:rgba(10,15,35,0.7);
-backdrop-filter:blur(20px);
-border-bottom:1px solid rgba(255,255,255,0.05);
-z-index:1000;
-}
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
 
-header h1{
-font-weight:800;
-letter-spacing:2px;
-}
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
 
-nav a{
-margin-left:30px;
-color:#cbd5e1;
-text-decoration:none;
-transition:0.3s;
-}
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    gap: 4rem;
+  }
 
-nav a:hover{
-color:#60a5fa;
-}
+  .hero-orb {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,229,160,0.08) 0%, transparent 70%);
+    top: 10%; right: -10%;
+    border-radius: 50%;
+    pointer-events: none;
+  }
 
-/* Sections */
-section{
-padding:120px 8%;
-}
+  .hero-orb2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,170,255,0.06) 0%, transparent 70%);
+    bottom: 10%; left: 5%;
+    border-radius: 50%;
+    pointer-events: none;
+  }
 
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-}
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(0,229,160,0.08);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
 
-.hero h2{
-font-size:70px;
-font-weight:800;
-background:linear-gradient(90deg,#60a5fa,#9333ea,#60a5fa);
-background-size:200%;
--webkit-background-clip:text;
-color:transparent;
-animation:shine 6s linear infinite;
-}
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
 
-@keyframes shine{
-0%{background-position:0%;}
-100%{background-position:200%;}
-}
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
 
-.hero p{
-max-width:850px;
-margin-top:25px;
-color:#94a3b8;
-line-height:1.9;
-font-size:18px;
-}
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
 
-.btn{
-margin-top:30px;
-padding:14px 36px;
-border-radius:50px;
-border:1px solid #60a5fa;
-color:#60a5fa;
-text-decoration:none;
-transition:0.3s;
-display:inline-block;
-}
+  h1 .name-accent {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+  }
 
-.btn:hover{
-background:#60a5fa;
-color:black;
-transform:translateY(-6px);
-box-shadow:0 15px 40px #60a5fa40;
-}
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s 0.2s ease both;
+    line-height: 1.8;
+  }
 
-/* Headings */
-h3{
-text-align:center;
-font-size:40px;
-margin-bottom:60px;
-font-weight:800;
-}
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
 
-/* Cards */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:40px;
-}
+  .btn {
+    padding: 0.75rem 1.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.02em;
+  }
 
-.card{
-background:rgba(255,255,255,0.03);
-padding:45px;
-border-radius:25px;
-backdrop-filter:blur(25px);
-border:1px solid rgba(255,255,255,0.06);
-transition:0.4s;
-}
+  .btn-primary { background: var(--grad); color: #0b0c0e; }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border2); }
+  .btn-ghost:hover { background: var(--surface); }
 
-.card:hover{
-transform:translateY(-15px);
-box-shadow:0 30px 60px rgba(0,0,0,0.6);
-}
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
 
-/* Skills */
-.skills span{
-display:inline-block;
-margin:12px;
-padding:12px 22px;
-border:1px solid #9333ea;
-border-radius:30px;
-color:#9333ea;
-transition:0.3s;
-}
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
 
-.skills span:hover{
-background:#9333ea;
-color:white;
-}
+  .stat-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .stat-card.green::before { background: var(--grad); }
+  .stat-card.blue::before { background: linear-gradient(90deg, #00aaff, #0077ff); }
+  .stat-card.red::before { background: linear-gradient(90deg, #ff6b6b, #ff4040); }
+  .stat-card.yellow::before { background: linear-gradient(90deg, #ffd700, #ffaa00); }
 
-/* Fade Animation */
-.fade{
-opacity:0;
-transform:translateY(50px);
-transition:1s ease;
-}
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
 
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 500;
+  }
 
-/* Footer */
-footer{
-text-align:center;
-padding:60px;
-color:#64748b;
-border-top:1px solid rgba(255,255,255,0.05);
-}
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-@media(max-width:768px){
-.hero h2{font-size:42px;}
-}
+  section { padding: 6rem 4rem; position: relative; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 3.5rem;
+    max-width: 540px;
+  }
+
+  #skills { background: var(--surface); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+  .skill-group:hover { border-color: rgba(0,229,160,0.25); }
+
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .tag {
+    padding: 4px 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+  .tag:hover { color: var(--text); border-color: var(--border2); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-4px); }
+
+  .project-card .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-gold { background: rgba(255,215,0,0.1); color: #ffd700; border: 1px solid rgba(255,215,0,0.25); }
+  .badge-green { background: rgba(0,229,160,0.08); color: var(--accent); border: 1px solid rgba(0,229,160,0.2); }
+  .badge-blue { background: rgba(0,170,255,0.08); color: var(--accent2); border: 1px solid rgba(0,170,255,0.2); }
+
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; line-height: 1.2; }
+  .project-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.7; flex: 1; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    margin-top: auto;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 10px; }
+
+  .project-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+
+  .metric { text-align: center; }
+  .metric-val { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--accent); }
+  .metric-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  #hackathons { background: var(--surface); }
+  .hackathon-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .hackathon-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem 2rem;
+    transition: border-color 0.2s;
+  }
+  .hackathon-item:hover { border-color: var(--border2); }
+
+  .hackathon-rank { font-family: 'DM Serif Display', serif; font-size: 2rem; min-width: 3rem; text-align: center; }
+  .hackathon-rank.gold { color: #ffd700; }
+  .hackathon-rank.teal { color: var(--accent); }
+  .hackathon-name { font-size: 1rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .hackathon-detail { font-size: 0.85rem; color: var(--muted); }
+  .hackathon-teams { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); text-align: right; }
+
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: rgba(0,229,160,0.3); }
+
+  .cert-icon {
+    width: 40px; height: 40px;
+    background: rgba(0,229,160,0.08);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+  }
+
+  .cert-name { font-size: 0.88rem; font-weight: 500; line-height: 1.3; }
+  .cert-issuer { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+  #extras { background: var(--surface); }
+
+  .extras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .extra-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+  }
+
+  .extra-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .extra-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.4rem; }
+  .extra-detail { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  #contact { text-align: center; padding: 8rem 4rem; }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.7rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: 'DM Mono', monospace;
+  }
+  .contact-link:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+  .section-divider {
+    width: 40px; height: 2px;
+    background: var(--grad);
+    margin-bottom: 2rem;
+    border-radius: 2px;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
+    section { padding: 4rem 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
 </style>
 </head>
-
 <body>
 
-<header>
-<h1>AKHILESH RAO</h1>
 <nav>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
+  <a href="#hero" class="nav-logo">akhilesh.dev</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#hackathons">Hackathons</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
-</header>
 
-<section class="hero">
-<h2>Akhilesh Rao</h2>
-<p>
-Electronics & Communication Engineering student at PES University passionate about 
-software engineering, system design, and building scalable real-world solutions. 
-Focused on mastering Python, strengthening data structures fundamentals, and 
-developing impactful engineering projects.
-</p>
-<a href="Akhilesh_Resume.pdf" target="_blank" class="btn">Download Resume</a>
-<a href="https://github.com/Akhi-22lesh" target="_blank" class="btn">GitHub</a>
+<section id="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-left">
+    <div class="hero-tag">Available for ECE Internships</div>
+    <h1>Building at the edge of<br><span class="name-accent">hardware & code.</span></h1>
+    <p class="hero-bio">I'm <strong>Akhilesh R S Rao</strong> — an ECE undergrad at PES University, Bangalore. I build embedded systems, wearable tech, and AI-powered tools that solve real problems at the intersection of electronics and software.</p>
+    <div class="hero-cta">
+      <a href="https://www.linkedin.com/in/akhilesh-rao-335956369/" target="_blank" class="btn btn-primary">Connect on LinkedIn</a>
+      <a href="https://github.com/Akhi-22lesh" target="_blank" class="btn btn-ghost">View GitHub →</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card green"><div class="stat-num">8.92</div><div class="stat-label">First Sem GPA</div></div>
+    <div class="stat-card blue"><div class="stat-num">3rd</div><div class="stat-label">EEE Hackathon</div></div>
+    <div class="stat-card yellow"><div class="stat-num">Top 10</div><div class="stat-label">Ather Hackathon</div></div>
+    <div class="stat-card red"><div class="stat-num">60+</div><div class="stat-label">Teams Competed</div></div>
+  </div>
 </section>
 
-<section id="about" class="fade">
-<h3>About Me</h3>
-<p style="max-width:900px;margin:auto;text-align:center;color:#94a3b8;line-height:1.9;font-size:16px;">
-I am a driven and ambitious Electronics & Communication Engineering undergraduate at PES University. 
-My academic foundation in digital logic, circuit theory, and computing principles enables me to approach 
-engineering problems from both hardware and software perspectives.
-<br><br>
-Beyond academics, I actively focus on strengthening my programming expertise in Python and building 
-solid foundations in data structures and algorithmic thinking. I enjoy solving complex problems, 
-writing efficient and structured code, and translating theoretical knowledge into practical implementations.
-<br><br>
-Through project development and hackathon participation, I continuously push myself to grow as a 
-high-performance engineer capable of building scalable, impactful, and technically sound solutions.
-</p>
+<section id="skills">
+  <p class="section-label reveal">Technical Arsenal</p>
+  <h2 class="reveal">Skills & Tools</h2>
+  <div class="section-divider reveal"></div>
+  <p class="section-sub reveal">From microcontrollers to ML pipelines — I work across the stack.</p>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags"><span class="tag">Python</span><span class="tag">C</span><span class="tag">MicroPython</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Embedded & Hardware</div>
+      <div class="skill-tags"><span class="tag">Raspberry Pi Pico W</span><span class="tag">RP2040</span><span class="tag">I²C / UART</span><span class="tag">BLE / Wi-Fi</span><span class="tag">Sensor Calibration</span><span class="tag">Circuit Design</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Software & Frameworks</div>
+      <div class="skill-tags"><span class="tag">React.js</span><span class="tag">React Native</span><span class="tag">Flask</span><span class="tag">Expo</span><span class="tag">Tkinter</span><span class="tag">Matplotlib</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">ML & Data</div>
+      <div class="skill-tags"><span class="tag">scikit-learn</span><span class="tag">Anomaly Detection</span><span class="tag">Signal Processing</span><span class="tag">Pandas</span><span class="tag">Data Visualization</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Protocols & Sensors</div>
+      <div class="skill-tags"><span class="tag">MAX30102</span><span class="tag">AD8232 ECG</span><span class="tag">DS18B20</span><span class="tag">GSR Module</span><span class="tag">GPS / IMU</span><span class="tag">Accelerometer</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Tools</div>
+      <div class="skill-tags"><span class="tag">Git / GitHub</span><span class="tag">VS Code</span><span class="tag">Linux</span><span class="tag">Thonny</span></div>
+    </div>
+  </div>
 </section>
 
-<section id="skills" class="fade">
-<h3>Skills</h3>
-<div class="skills" style="text-align:center;">
-<span>Python</span>
-<span>HTML</span>
-<span>Git</span>
-<span>GitHub</span>
-<span>Data Structures</span>
-<span>Digital Logic</span>
-<span>Circuit Theory</span>
-</div>
+<section id="projects">
+  <p class="section-label reveal">Portfolio</p>
+  <h2 class="reveal">Featured Projects</h2>
+  <div class="section-divider reveal"></div>
+  <p class="section-sub reveal">Real-world builds that combine hardware intuition with software craft.</p>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <span class="badge badge-gold">🥉 3rd Place — EEE Hackathon 2026</span>
+      <div class="project-title">SYBA — Low-Cost Wearable Health Monitor</div>
+      <p class="project-desc">A fully open-source wearable biosensing platform built on Raspberry Pi Pico W. Monitors Heart Rate, SpO₂, Body Temperature, ECG, and Galvanic Skin Response in real-time — at a fraction of the cost of commercial wearables. Designed for rural India healthcare access with offline-capable AI anomaly detection.</p>
+      <div class="project-metrics">
+        <div class="metric"><div class="metric-val">92%</div><div class="metric-label">HR Accuracy</div></div>
+        <div class="metric"><div class="metric-val">5×</div><div class="metric-label">Cost Reduction</div></div>
+        <div class="metric"><div class="metric-val">&lt;2s</div><div class="metric-label">Read Latency</div></div>
+      </div>
+      <div class="project-stack"><span class="tag">Raspberry Pi Pico W</span><span class="tag">MicroPython</span><span class="tag">Flask</span><span class="tag">React.js</span><span class="tag">scikit-learn</span><span class="tag">BLE / Wi-Fi</span></div>
+      <span style="font-size:0.78rem; color: var(--muted); font-family: 'DM Mono', monospace;">Role: Embedded Software — MicroPython, signal processing, BLE stack</span>
+    </div>
+    <div class="project-card reveal">
+      <span class="badge badge-green">Python · AI</span>
+      <div class="project-title">AI Symptom Checker</div>
+      <p class="project-desc">A desktop application that performs symptom-based disease diagnosis using Jaccard similarity and coverage-based probability algorithms. Integrated AI chatbot that parses natural language to identify symptoms, with recovery graphs and severity estimation in a clean Tkinter UI.</p>
+      <div class="project-stack"><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">Matplotlib</span><span class="tag">Pandas</span><span class="tag">NLP</span></div>
+      <a href="https://github.com/Akhi-22lesh/AI-Symptom-Checker" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal">
+      <span class="badge badge-blue">React Native · IoT</span>
+      <div class="project-title">Smart Rider+</div>
+      <p class="project-desc">A real-time activity tracking mobile app using Accelerometer, Gyroscope, and GPS sensors to automatically classify walking, biking, and scooter riding. Features live map display, speed/distance visualization, and cross-platform deployment via Expo Go.</p>
+      <div class="project-stack"><span class="tag">React Native</span><span class="tag">Expo</span><span class="tag">JavaScript</span><span class="tag">GPS / IMU</span><span class="tag">React Native Maps</span></div>
+      <a href="https://github.com/Akhi-22lesh/Smart-Rider" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+  </div>
 </section>
 
-<section id="projects" class="fade">
-<h3>Projects</h3>
-<div class="grid">
-
-<div class="card" data-tilt>
-<h4>Programming Projects</h4>
-<p>
-Developed logic-driven applications and algorithm-focused solutions using Python,
-emphasizing structured problem-solving and clean code principles.
-</p>
-<a href="https://github.com/Akhi-22lesh" target="_blank" class="btn">View Code</a>
-</div>
-
-<div class="card" data-tilt>
-<h4>Electronics Mini Projects</h4>
-<p>
-Designed and implemented digital logic and circuit-based prototypes applying 
-engineering theory to practical working systems.
-</p>
-</div>
-
-<div class="card" data-tilt>
-<h4>Hackathon Participation</h4>
-<p>
-Collaborated in competitive environments building rapid prototypes and 
-innovative technical solutions under strict time constraints.
-</p>
-</div>
-
-</div>
+<section id="hackathons">
+  <p class="section-label reveal">Competitions</p>
+  <h2 class="reveal">Hackathon Achievements</h2>
+  <div class="section-divider reveal"></div>
+  <div class="hackathon-list">
+    <div class="hackathon-item reveal">
+      <div class="hackathon-rank gold">🥉</div>
+      <div>
+        <div class="hackathon-name">EEE Hackathon 2026 — SYBA Biosensing Platform</div>
+        <div class="hackathon-detail">3rd place out of 60 teams · Built open-source wearable health monitor with real-time vitals &amp; AI anomaly detection</div>
+      </div>
+      <div class="hackathon-teams">60 teams</div>
+    </div>
+    <div class="hackathon-item reveal">
+      <div class="hackathon-rank teal">⚡</div>
+      <div>
+        <div class="hackathon-name">Ather Energy Hackathon — Top 10 Finalist</div>
+        <div class="hackathon-detail">Top 10 finish out of 60 teams · Organised by Ather Energy, one of India's leading EV companies</div>
+      </div>
+      <div class="hackathon-teams">60 teams</div>
+    </div>
+  </div>
 </section>
 
-<section id="contact" class="fade">
-<h3>Contact</h3>
-<p style="text-align:center;font-size:16px;line-height:2;">
-📧 Email: <a href="mailto:akhileshramshankarrao@gmail.com" style="color:#60a5fa;">akhileshramshankarrao@gmail.com</a><br>
-💼 LinkedIn: <a href="https://www.linkedin.com/in/akhilesh-rao-335956369/" target="_blank" style="color:#60a5fa;">linkedin.com/in/akhilesh-rao-335956369</a><br>
-📱 Phone: +91 9845721123<br>
-💻 GitHub: <a href="https://github.com/Akhi-22lesh" target="_blank" style="color:#60a5fa;">github.com/Akhi-22lesh</a>
-</p>
+<section id="certifications">
+  <p class="section-label reveal">Credentials</p>
+  <h2 class="reveal">Certifications</h2>
+  <div class="section-divider reveal"></div>
+  <div class="certs-grid reveal">
+    <div class="cert-card"><div class="cert-icon">🐍</div><div><div class="cert-name">Python (Basic)</div><div class="cert-issuer">HackerRank</div></div></div>
+    <div class="cert-card"><div class="cert-icon">⚙️</div><div><div class="cert-name">C Programming</div><div class="cert-issuer">HackerRank</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🔬</div><div><div class="cert-name">EPD Hackathon</div><div class="cert-issuer">Electronic Principles & Devices · PES University</div></div></div>
+    <div class="cert-card"><div class="cert-icon">🏆</div><div><div class="cert-name">EEE Hackathon — 3rd Place</div><div class="cert-issuer">PES University · 2026</div></div></div>
+    <div class="cert-card"><div class="cert-icon">⚡</div><div><div class="cert-name">Ather Hackathon — Top 10</div><div class="cert-issuer">Ather Energy · 2026</div></div></div>
+  </div>
+</section>
+
+<section id="extras">
+  <p class="section-label reveal">Beyond Code</p>
+  <h2 class="reveal">Extracurriculars</h2>
+  <div class="section-divider reveal"></div>
+  <div class="extras-grid reveal">
+    <div class="extra-card"><div class="extra-icon">🏏</div><div class="extra-title">PESU Cricket Team</div><div class="extra-detail">Member of the PES University Cricket Team — representing the university in intercollegiate matches.</div></div>
+    <div class="extra-card"><div class="extra-icon">🏀</div><div class="extra-title">Inter-Dept Basketball</div><div class="extra-detail">Competed in PES University's inter-departmental Basketball tournament.</div></div>
+    <div class="extra-card"><div class="extra-icon">🏸</div><div class="extra-title">Inter-Dept Badminton & Cricket</div><div class="extra-detail">Active participant in inter-departmental Badminton and Cricket tournaments at PESU.</div></div>
+    <div class="extra-card"><div class="extra-icon">🔬</div><div class="extra-title">Hackathon Regular</div><div class="extra-detail">Actively participates in tech and domain-specific hackathons — turning ideas into working prototypes under pressure.</div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label reveal">Get in Touch</p>
+  <h2 class="reveal">Let's build something together.</h2>
+  <div class="section-divider" style="margin: 1.5rem auto 1rem;"></div>
+  <p class="section-sub reveal" style="margin: 0 auto; text-align:center;">I'm actively looking for ECE internships. Whether it's embedded systems, IoT, or anything at the hardware-software boundary — I'm in.</p>
+  <div class="contact-links reveal">
+    <a href="mailto:akhileshramshankarrao@gmail.com" class="contact-link">✉ akhileshramshankarrao@gmail.com</a>
+    <a href="tel:+919845721123" class="contact-link">📞 +91 98457 21123</a>
+    <a href="https://www.linkedin.com/in/akhilesh-rao-335956369/" target="_blank" class="contact-link">in LinkedIn</a>
+    <a href="https://github.com/Akhi-22lesh" target="_blank" class="contact-link">⌥ GitHub</a>
+  </div>
 </section>
 
 <footer>
-© 2026 Akhilesh Rao 
+  <span>© 2026 Akhilesh R S Rao · Bangalore, India</span>
+  <span>ECE · PES University · Batch of 2028</span>
 </footer>
 
 <script>
-const elements=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-elements.forEach(el=>{
-const top=el.getBoundingClientRect().top;
-if(top<window.innerHeight-100){
-el.classList.add('show');
-}
-});
-});
-
-VanillaTilt.init(document.querySelectorAll("[data-tilt]"),{
-max:15,
-speed:400,
-glare:true,
-"max-glare":0.2,
-});
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
 </script>
 
 </body>
